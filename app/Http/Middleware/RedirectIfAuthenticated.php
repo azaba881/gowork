@@ -32,7 +32,7 @@ class RedirectIfAuthenticated
             }
             elseif(Auth::user()->type =='entreprise')
             {
-                return redirect('/entreprisecreate');
+                return redirect('/entreprise');
             }
             else
             {

@@ -23,23 +23,61 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index()   
     {
         
         $job = DB::table('jobs')
+        ->Where('statut', 'active')
         ->get();
+
         $nombre=count($job);
+
+        $skills = DB::table('skills') 
+                 ->where('user_id', Auth::user()->id)
+                 ->get();
+        $etudes = DB::table('etudes') 
+                 ->where('user_id', Auth::user()->id)
+                 ->get();
+        $experiences = DB::table('experiences') 
+                 ->where('user_id', Auth::user()->id)
+                 ->get();
+ 
+        if($nombre > 8){
+            $job = DB::table('jobs')
+        ->Where('statut', 'active')
+        ->paginate(8);
+        }
           
-        return view('home',compact(['job',$job],['nombre',$nombre]));
+        
+          
+        return view('home',compact(['job',$job],['nombre',$nombre],['etudes',$etudes],
+        ['experiences',$experiences],
+        ['skills',$skills],));
     }
 
     public function standard($id)
     {        
         DB::table('users')
                     ->where('id', $id)
-                    ->update(['abonnement' => 'standard']);        
-        return view('abonnement');
-    } 
+                    ->update(['abonnement' => 'standard']);          
+        return redirect('abonnement');
+    }
+    
+    public function base($id)
+    {        
+        DB::table('users')
+                    ->where('id', $id)
+                    ->update(['abonnement' => 'base']);        
+        return redirect('abonnement');
+    }
+
+    public function premium($id)
+    {        
+        DB::table('users')
+                    ->where('id', $id)
+                    ->update(['abonnement' => 'premium']);        
+        return redirect('abonnement');
+    }
 
     public function abonnement()
     {
@@ -47,7 +85,7 @@ class HomeController extends Controller
     }
     public function candidature()
     {
-        return view('candidature');
+        return view('candidature');  
     }
 
     public function profil()
@@ -55,26 +93,51 @@ class HomeController extends Controller
         $travailleur = DB::table('travailleurs') 
                  ->where('user_id', Auth::user()->id)
                  ->get();
-        return view('profil',compact('travailleur',$travailleur));
+        $skills = DB::table('skills') 
+                 ->where('user_id', Auth::user()->id)
+                 ->get();
+        $etudes = DB::table('etudes') 
+                 ->where('user_id', Auth::user()->id)
+                 ->get();
+        $experiences = DB::table('experiences') 
+                 ->where('user_id', Auth::user()->id)
+                 ->get();
+        $bios = DB::table('bios') 
+                 ->where('user_id', Auth::user()->id)
+                 ->get();
+        
+        return view('profil',compact(['travailleur',$travailleur],
+                                     ['etudes',$etudes],
+                                     ['experiences',$experiences],
+                                     ['skills',$skills],
+                                     ['bios',$bios],
+                                                                   ));
     }
-   
+
+  
+    public function  travailleurexterne()
+    {
+        $job = DB::table('externes')->get();
+        return view('candidat/externes',compact('job',$job));
+    }
 
     //profil entreprise here
 
     public function entreprise()
     {
         $job = DB::table('jobs')
-                 ->where('user_id', Auth::user()->id)
+                 ->where('user_id', Auth::user()->id) 
                  ->get();
-        
+        $nombre=1;
         $jobcount=count($job);
-        return view('entreprise/index',compact(['job',$job],['jobcount',$jobcount]));
+        return view('entreprise/index',compact(['job',$job],['jobcount',$jobcount],['nombre',$nombre]));
     }
     
     public function entrepriseabonnement()
     {
         return view('entreprise/abonnement');
     }
+
     public function entreprisecandidature()
     {
         return view('entreprise/candidature');

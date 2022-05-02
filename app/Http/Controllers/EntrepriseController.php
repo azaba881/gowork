@@ -143,7 +143,7 @@ class EntrepriseController extends Controller
     public function demandeur() 
     {    
        $demandeur = User::all()->where('type','utilisateur');
-       return view('entreprise/demandeur',compact('demandeur',$demandeur));
+       return view('entreprise/demandeur',compact('demandeur',$demandeur)); 
     }
 
     /**

@@ -38,8 +38,10 @@ class TravailleurController extends Controller
         } else {
             return view('404');
         }
-        //travaailleurcreate  
+        
     }
+
+   
 
     /**
      * Store a newly created resource in storage.
@@ -93,6 +95,28 @@ class TravailleurController extends Controller
         //
     }
 
+    public function cv()
+    {
+        $travailleur = DB::table('travailleurs') 
+                 ->where('user_id', Auth::user()->id)
+                 ->get();
+        $skills = DB::table('skills') 
+                 ->where('user_id', Auth::user()->id)
+                 ->get();
+        $etudes = DB::table('etudes') 
+                 ->where('user_id', Auth::user()->id)
+                 ->get();
+        $experiences = DB::table('experiences') 
+                 ->where('user_id', Auth::user()->id)
+                 ->get();
+        $bios = DB::table('bios') 
+                 ->where('user_id', Auth::user()->id) 
+                 ->get();
+        
+        return view('candidat/cv',compact(['travailleur',$travailleur],['etudes',$etudes],
+        ['experiences',$experiences],
+        ['skills',$skills],['bios',$bios]));
+    }
     /**
      * Update the specified resource in storage.
      *

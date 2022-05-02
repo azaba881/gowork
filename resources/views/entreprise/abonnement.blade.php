@@ -26,10 +26,10 @@
                         </tr>                      
                     </tbody>
                 </table>
-                @if (auth()->user()->abonnement == 'base')
-                <a href="https://wrappixel.com/templates/ampleadmin/" target="_blank" class="btn" style="width: 80%;margin-top: 20px;color:black;background-color:rgb(209, 209, 209)">EN COURS ....</a></td>   
+                @if (Auth()->User()->abonnement == 'base')
+                <a href="{{route('base',Auth()->User()->id)}}"  class="btn btn-success disabled" target="_blank" style="width: 80%;margin-top: 20px;">Abonnement actif</a></td> 
                 @else
-                <a href="https://wrappixel.com/templates/ampleadmin/" target="_blank" class="btn btn-info" style="width: 80%;margin-top: 20px;">Choisir le plan</a></td>
+                <a href="{{route('base',Auth()->User()->id)}}"  class="btn btn-info" target="_blank" style="width: 80%;margin-top: 20px;">Choisir le plan</a></td> 
                 @endif
                
             </div>                                                  
@@ -62,7 +62,11 @@
                     </tr>                      
                 </tbody>
             </table>
-            <a href="https://wrappixel.com/templates/ampleadmin/" target="_blank" class="btn" style="width: 80%;margin-top: 20px;background-color:green;color:white;">Choisir le plan</a></td>                                                     
+            @if (Auth()->User()->abonnement == 'standard')
+            <a href="{{route('standard',Auth()->User()->id)}}"  class="btn btn-success disabled" target="_blank" style="width: 80%;margin-top: 20px;">Abonnement actif</a></td> 
+            @else
+            <a href="{{route('standard',Auth()->User()->id)}}"  class="btn btn-info" target="_blank" style="width: 80%;margin-top: 20px;">Choisir le plan</a></td> 
+            @endif                                                     
     </div>
 </div>
 </div>
@@ -93,7 +97,11 @@
                 </tr>                      
             </tbody>
         </table>
-        <a href="https://wrappixel.com/templates/ampleadmin/" target="_blank" class="btn" style="width: 80%;margin-top: 20px;background-color:green;color:white">Choisir le plan</a></td>                                                     
+        @if (Auth()->User()->abonnement == 'premium')
+        <a href="{{route('premium',Auth()->User()->id)}}"  class="btn btn-success disabled" target="_blank" style="width: 80%;margin-top: 20px;">Abonnement actif</a></td> 
+        @else
+        <a href="{{route('premium',Auth()->User()->id)}}"  class="btn btn-info" target="_blank" style="width: 80%;margin-top: 20px;">Choisir le plan</a></td> 
+        @endif                                                   
 </div>
 </div>
 </div>

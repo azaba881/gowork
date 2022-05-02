@@ -10,7 +10,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
     <!-- Custom Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
-    <link href="./plugins/jquery-steps/css/jquery.steps.css" rel="stylesheet">
+    <link href="./plugins/jquery-steps/css/jquery.steps.css" rel="stylesheet"> 
 <style>
     
   /* Style the input fields */
@@ -228,6 +228,11 @@
                         </a>
                     </li>
                     <li>
+                        <a href="{{route('documents')}}" aria-expanded="false">
+                            <span class="nav-text" ><i style="color: green" class="fa  fa-folder fa-fw" aria-hidden="true"></i> DOCUMENTS</a></span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="{{route('abonnement')}}" aria-expanded="false">
                             <span class="nav-text"><i style="color: green" class="fa fa-credit-card fa-fw" aria-hidden="true"></i> ABONNEMENT</a></span>
                         </a>
@@ -239,18 +244,19 @@
                     </li> 
                     @if (auth()->user()->abonnement == 'standard')
                     <li>
-                        <a href="{{route('profil')}}" aria-expanded="false">
-                            <span class="nav-text"><i style="color: green" class="fa fa-user fa-fw" aria-hidden="true"></i> GÉNÉRER CV</a></span>
+                        <a href="{{route('cv')}}" aria-expanded="false">
+                            <span class="nav-text"><i style="color: green" class="fa fa-book fa-fw" aria-hidden="true"></i> GÉNÉRER CV</a></span>
                         </a>
                     </li>
                     @endif
                     @if (auth()->user()->abonnement == 'premium' || auth()->user()->abonnement == 'standard')
                     <li>
-                        <a href="{{route('profil')}}" aria-expanded="false">
-                            <span class="nav-text"><i style="color: green" class="fa fa-user fa-fw" aria-hidden="true"></i> OFFRES EXTERNES</a></span>
+                        <a href="{{route('travailleurexterne')}}" aria-expanded="false">
+                            <span class="nav-text"><i style="color: green" class="fa fa-list" aria-hidden="true"></i> OFFRES EXTERNES</a></span>
                         </a>
                     </li> 
                     @endif
+                    
                     <li>
                         <a aria-expanded="false" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
@@ -261,10 +267,7 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
-                    </li>  
-                    <li>
-                        <span class="nav-text"> <a href="#" aria-expanded="false" target="_blank" style="background-color: red;color: white;" class="btn btn-danger ">Update Profil</a></span>
-                    </li>                   
+                    </li>                    
                 </ul>
             </div>
         </div>

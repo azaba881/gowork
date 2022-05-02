@@ -108,7 +108,7 @@
  
         <!-- end section -->
     
-    </div>
+    </div> 
 
     <div class="row" style="padding-right: 10px"> 
         <div class="col-8">
@@ -140,7 +140,7 @@
                         <tbody>
                             @foreach ($job as $job)                                                                          
                             <tr>
-                                <td> {{$job->id}}</td>
+                                <td> {{$nombre++}}</td>
                                 <td> <img src="{{$job->affiche}}" class="thumbnail zoom" width="100px" alt=""></td>
                                 <td>{{$job->title}}</td>
                                 <td>

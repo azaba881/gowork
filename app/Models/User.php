@@ -59,4 +59,54 @@ class User extends Authenticatable
     { 
         return  $this -> hasOne ( Job::class ) ; 
     }
+
+    public  function  bio ( ) : HasOne 
+    { 
+        return  $this -> hasOne ( Bio::class ) ; 
+    }
+
+    public  function  bac ( ) : HasOne 
+    { 
+        return  $this -> hasOne ( Bac::class ) ; 
+    }
+
+    public  function  license ( ) : HasOne 
+    { 
+        return  $this -> hasOne ( License::class ) ; 
+    }
+
+    public  function  master ( ) : HasOne 
+    { 
+        return  $this -> hasOne ( License::class ) ; 
+    }
+
+    public  function  doctorat ( ) : HasOne 
+    { 
+        return  $this -> hasOne ( Doctorat::class ) ; 
+    }
+
+    public  function  skill ( ) : HasOne 
+    { 
+        return  $this -> hasOne ( Skills::class ) ; 
+    }
+
+    public  function  experience ( ) : HasOne 
+    { 
+        return  $this -> hasOne ( Experience::class ) ; 
+    }
+
+    public  function  attestation ( ) : HasOne 
+    { 
+        return  $this -> hasOne ( Attestation::class ) ; 
+    }
+
+    public  function    certification ( ) : HasOne 
+    { 
+        return  $this -> hasOne ( Certification::class ) ; 
+    }
+
+    public  function    etude ( ) : HasOne 
+    { 
+        return  $this -> hasOne ( Etude::class ) ; 
+    }
 }

@@ -81,9 +81,9 @@
                             <option value="" selected disabled hidden>Choisissez ici</option>
                             <option style="color:black" value="CDI">CDI</option>
                             <option style="color:black" value="CDD">CDD</option>
-                            <option style="color:black" value="CTT">stage</option>
-                            <option style="color:black" value="CUI">Interim</option>
-                            <option style="color:black" value="CAE">Benevolat</option>
+                            <option style="color:black" value="STAGE">STAGE</option>
+                            <option style="color:black" value="INTERIM">INTÉRIM</option>
+                            <option style="color:black" value="REMOTE">REMOTE</option>
                         </select>
                         @error('type')
                             <span class="invalid-feedback" role="alert">

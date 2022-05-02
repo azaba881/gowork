@@ -84,6 +84,19 @@
                                         </div>
                                     </div>
 
+                                   
+                                       
+                                            <div class="">
+                                                <div class="form-check mb-3">
+                                                    <label class="form-check-label">
+                                                        <input type="checkbox" class="form-check-input" value="true" required>ACCEPTER LES <br> POLITIQUES DE LA PLATEFORME</label>
+                                                </div>
+                                                
+                                            </div>
+                                       
+                                   
+                                    
+
                                     <div class="form-group row mb-0">
                                         <button style="width: 100%;background-color:green;" type="submit" class="btn btn-primary">
                                           <h4 style="color: white">INSCRIPTION</h4>

@@ -52,7 +52,7 @@ class JobController extends Controller
                     $job->description = request('description');
                     $job->expiration = request('expiration');
                     $job->save();                    
-                    return redirect('/hme');
+                    return redirect('/entreprise');
            
         } else {
             return view('404');
@@ -74,6 +74,16 @@ class JobController extends Controller
                     ->update(['statut' => 'active']);
                     return redirect()->route('entreprise');                    
     }
+
+    public function jobdetail($id) 
+    {
+        $jobs = DB::table('jobs')->where('id', $id)->Where('deleted_at', null)->get();
+        $job = $jobs[0];
+        dd($job);
+        //return view('jobdetail',compact('job',$job));
+                            
+    }
+
 
     /**
      * Display the specified resource.
@@ -97,6 +107,8 @@ class JobController extends Controller
     {
         //
     }
+
+    
 
     /**
      * Remove the specified resource from storage.

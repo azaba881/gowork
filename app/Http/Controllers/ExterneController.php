@@ -20,7 +20,9 @@ class ExterneController extends Controller
      */
     public function index()
     {
-        return view('admin/externe');
+        $externe = DB::table('externes')
+        ->get();
+        return view('admin/externe',compact('externe',$externe));
     }
 
     /**
@@ -38,14 +40,14 @@ class ExterneController extends Controller
 
         $externe = new Externe();
         $externe->affiche = $actualPath;  
-        $externe->title = request('nom');
-        $externe->domaine = request('description');
-        $externe->nombre = request('domaine');
-        $externe->description = request('addresse');
-        $externe->site = request('email');
-        $externe->expiration = request('site');
+        $externe->title = request('title'); 
+        $externe->domaine = request('domaine');
+        $externe->nombre = request('nombre');
+        $externe->description = request('description');
+        $externe->site = request('site');
+        $externe->expiration = request('expiration');
         $externe->save(); 
-        return redirect('/externe');
+        return redirect('/externes');
     }
 
     /**

@@ -128,7 +128,13 @@
                         <label for="password" class="col-md-12 col-form-label">{{ __('Password') }}</label>
 
                         <div class="col-md-12">
-                            <input id="password" style="height: 50px;border-radius:0" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                            <div class="input-group mb-3">
+                                
+                                <input  id="password" style="height: 50px;border-radius:0" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                                <div class="input-group-prepend"><span class="input-group-text"><i id="togglePassword" style="cursor:pointer;color:green" class="fa fa-eye-slash"></i></span>
+                                </div>
+                            </div>
+                            
 
                             @error('password')
                                 <span class="invalid-feedback" role="alert">
@@ -329,6 +335,21 @@
                       document.querySelector("#timer4").classList.add("end");
                     }}, 675);
 
+</script>
+
+<script>
+    const togglePassword = document.querySelector('#togglePassword');
+    const password = document.querySelector('#password');
+
+        togglePassword.addEventListener('click', function (e) {
+            
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type); 
+
+            document.getElementById('togglePassword').className = 'fa fa-eye';
+                       
+            this.classList.Password('bi-eye');
+        });
 </script>
          </body>
      </html>
