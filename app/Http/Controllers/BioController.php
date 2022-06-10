@@ -66,11 +66,11 @@ class BioController extends Controller
                 $bio->save();
                 return redirect('/profil');
             } else{
-                $bio = new Bio(); 
-                $bio = Bio::find(Auth()->User()->id);
-                $bio->comment = request('comment');
-                $bio->save();
-                return redirect('/profil');
+                    $bio = new Bio(); 
+                    $bio = Bio::find(Auth()->User()->id);
+                    $bio->comment = request('comment');
+                    $bio->save();
+                    return redirect('/profil');
                 //redirect('/profil') . $request->input('id');
             }        
         }else{

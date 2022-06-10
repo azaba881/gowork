@@ -18,11 +18,11 @@
                         <thead>
                             <tr>
                                 <th scope="col">NOM ET PRÉNOMS</th>
-                                <th scope="col">compétence 1</th>
-                                <th scope="col">compétence 2</th>
-                                <th scope="col">compétence 3</th>
-                                <th scope="col">compétence 4</th>
-                                <th scope="col">compétence 5</th>
+                                <th scope="col">HTML</th>
+                                <th scope="col">CSS</th>
+                                <th scope="col">JAVASCRIPT</th>
+                                <th scope="col">JAVA</th>
+                                <th scope="col">IA</th>
                                 <th scope="col">Pourcentage</th>
                             </tr>
                         </thead>

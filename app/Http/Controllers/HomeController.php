@@ -46,10 +46,7 @@ class HomeController extends Controller
             $job = DB::table('jobs')
         ->Where('statut', 'active')
         ->paginate(8);
-        }
-          
-        
-          
+        }        
         return view('home',compact(['job',$job],['nombre',$nombre],['etudes',$etudes],
         ['experiences',$experiences],
         ['skills',$skills],));
@@ -57,7 +54,7 @@ class HomeController extends Controller
 
     public function standard($id)
     {        
-        DB::table('users')
+        DB::table('n')
                     ->where('id', $id)
                     ->update(['abonnement' => 'standard']);          
         return redirect('abonnement');
@@ -83,11 +80,44 @@ class HomeController extends Controller
     {
         return view('abonnement');
     }
-    public function candidature()
+
+    //candidatures 
+
+    public function candidature() 
     {
-        return view('candidature');  
+        
+        $candidatures = DB::table('candidatures') 
+                 ->where('candidatures.user_id', Auth::user()->id)
+                 ->join('jobs','candidatures.job','=','jobs.id')
+                 ->select('candidatures.*','jobs.*')
+                 ->get();
+        $nombre=1;
+        return  view('candidature',compact(['candidatures',$candidatures],['nombre',$nombre]));
     }
 
+    public function candidatureentreprise($id)
+    {
+        
+        $candidatures = DB::table('candidatures') 
+                 ->join('users','candidatures.user_id','=','users.id')
+                 ->select('candidatures.*','users.*')
+                 ->get();
+
+        $candidatures = DB::table('candidatures') 
+                 ->join('jobs','candidatures.user_id','=','jobs.id')
+                 ->select('candidatures.*','jobs.*')
+                 ->get();
+
+        $candidatures = DB::table('candidatures') 
+                 ->where('candidatures.user_id', Auth::user()->id)
+                 ->join('jobs','candidatures.job','=','jobs.id')
+                 ->select('candidatures.*','jobs.*')
+                 ->get();
+       
+        $nombre=1;
+        return  view('candidature',compact(['candidatures',$candidatures],['nombre',$nombre]));  
+    }
+ 
     public function profil()
     {
         $travailleur = DB::table('travailleurs') 

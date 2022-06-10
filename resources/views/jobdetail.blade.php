@@ -7,12 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-        * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    box-sizing:content-box;
-}
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        box-sizing:content-box;
+        }
 body 
 { max-width:1280px;
   background-color:white;

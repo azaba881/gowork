@@ -23,6 +23,8 @@ Auth::routes();
 //profil demandeur d'emploi
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/candidature', [App\Http\Controllers\HomeController::class, 'candidature'])->name('candidature');
+Route::post('/candidaturestore/{id}', [App\Http\Controllers\CandidatureController::class, 'show'])->name('candidaturestore');
+
 Route::get('/abonnement', [App\Http\Controllers\HomeController::class, 'abonnement'])->name('abonnement');
 Route::get('/profil', [App\Http\Controllers\HomeController::class, 'profil'])->name('profil');
 

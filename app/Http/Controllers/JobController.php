@@ -5,11 +5,11 @@ use App\Models\User;
 use App\Models\Job; 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\DB; 
 use Illuminate\Support\Facades\Storage;
 
 class JobController extends Controller
-{
+{ 
     public function __construct()
     {
         $this->middleware('auth');
@@ -80,8 +80,7 @@ class JobController extends Controller
         $jobs = DB::table('jobs')->where('id', $id)->Where('deleted_at', null)->get();
         $job = $jobs[0];
         dd($job);
-        //return view('jobdetail',compact('job',$job));
-                            
+        //return view('jobdetail',compact('job',$job));                            
     }
 
 

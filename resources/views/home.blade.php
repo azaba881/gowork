@@ -92,7 +92,11 @@
                     <div class="white-box analytics-info" style="padding: 8px;">
                         <ul style="display: flex;flex-direction: row;justify-content: space-between;align-items: center;">
                             <li>
-                                <h3 style="font-size: 15px;" class="box-title">{{$jobs->title}}</h3>
+                                <h3 style="font-size: 15px;" class="box-title">
+                                    @foreach(explode(' ', $jobs->title) as $info) 
+                                    {{$info}} <br>
+                                    @endforeach
+                                </h3>
                             </li>
                             <li  class="text-right"> <h5 class="box-title"> <a href="{{route('jobdetail',$jobs->id)}}" style="margin-right:5px;"><i style="color: green" class="fa fa-eye"></i></a> <span style="font-size:15px;padding: 7px;background-color: red;color: white;background-origin: content-box;"> {{$jobs->type}}</span></h5> </li>
                         </ul>
@@ -103,6 +107,7 @@
                 
             </div>
              
+            
      
        @endforeach
        
@@ -134,43 +139,57 @@
         
     <div>
          
-        
-             
         <div class="modal fade" id="exampleModal" tabindex="-1"  >
             <div class="modal-dialog">
                 <div class="modal-content" >
-                <div class="form-input-content">
+                <div class="form-input-content"> 
                     <div class="card login-form mb-0" >
                         <div class="card-body pt-5">
-                            <a class="" href="{{route('home')}}"> <h4 style="color: green">Formulaire de candidature</h4></a>
-    
-                    <form method="POST" class="mt-3 mb-5 login-input" action="{{ route('login') }}">
+                         <form method="POST" class="mt-3 mb-5 login-input" action="{{ route('candidaturestore',$jobs->id) }}" enctype="multipart/form-data">
                         @csrf
-    
-                        <div class="form-group row">
-                            <label for="email" class="col-md-12 col-form-label">{{ __('E-Mail Address') }}</label>
-    
+        
+                        <div class="form-group row" style="text-align: justify">
+                            <label  for="comment" class="col-md-12 col-form-label">BIO</label>
+                
                             <div class="col-md-12">
-                                <input id="email" style="height: 50px;border-radius:0"  type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-    
-                                @error('email')
+                                <textarea id="comment" style="height: 30px;border-bottom:1px solid gray;" name="comment" id="" cols="30" rows="10" class="form-control @error('comment') is-invalid @enderror" name="comment" value="{{ old('comment') }}"  autocomplete="comment" autofocus></textarea>
+                               
+                                @error('comment')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
-                        </div>    
-                        <div class="form-group">
-                            
-                                <button  type="submit" style="background-color: green;width:100%;" class="btn login-form__btn submit" style="width: 100%">
-                                    {{ __('Login') }}
+                        </div>
+                
+                        <div class="form-group row">
+                            <label for="fichier" class="col-md-12 col-form-label">{{ __('E-Mail Address') }}</label>
+                
+                            <div class="col-md-12">
+                                <input id="fichier" style="height: 50px;border-radius:0"  type="file" class="form-control @error('fichier') is-invalid @enderror" name="fichier" value="{{ old('fichier') }}" required autocomplete="fichier" autofocus>
+                
+                                @error('fichier')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group">                            
+                                <button  type="submit" style="background-color: green;width:100%;" class="btn" style="width: 100%">
+                                   AJOUTER UN BAC
                                 </button>
                         </div>
-                    </form>
+                       
+                    </form>  
                 </div>
             </div>
             </div>
         </div>
-        <!-- end section -->
+                
+            </div>
+        </div>
+             
+        
         
 @endsection
